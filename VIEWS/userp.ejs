@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+</head>
+<body>
+    <button id="sendEmailBtn">Send Email</button>
+
+    <script>
+        document.getElementById('sendEmailBtn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        recipient: 'recipient_email@example.com',
+                        subject: 'Auto-generated email',
+                        message: 'This is an auto-generated email.'
+                    })
+                });
+                const result = await response.text();
+                console.log(result);
+                alert(result);
+            } catch (error) {
+                console.error(error);
+                alert('Error sending email');
+            }
+        });
+    </script>
+</body>
+</html>

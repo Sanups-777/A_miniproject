@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/styles1.css" />
+
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="header">
+      <nav>
+        <a href="index.html"><img src="http://localhost:3300/IMAGES/rsetlogo.png" alt="rsetlogo" /></a>
+        <div class="nav-links">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="/users/details">Upcoming drives</a></li>
+            <li><a href="login.html">Students</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="">Internship Team</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="text-box">
+        <h1>Learn, Serve, Excel</h1>
+        <p>Students Success Through Innovations</p>
+      </div>
+    </section>
+
+    <section class="course">
+      <div class="column">
+        <form  action="/login/user" method="post">
+          <p font-weight="bolder" ;>Sign into your account</p>
+          <p>Sign in to your account using uid and password.</p>
+
+          <input
+            type="email"
+            name="uid"
+            class="uidc"
+            id="uid"
+            placeholder="uid"
+            required
+          />
+          <br /><br />
+          <input
+            type="password"
+            class="passc"
+            name="pass"
+            id="pass"
+            placeholder="password"
+            required
+          />
+          <br /><br />
+          <button class="btn" type="submit">Sign in</button>
+          <p>Don't have an account? <a href="">Click here</a></p>
+        </form>
+      </div>
+      <div class="column">
+        <p>
+          Rajagiri School of Engineering & Technology (RSET)- Autonomous,<br />
+          established in 2001, is a private self-financing college, which had<br />
+          been affiliated to the Mahatma Gandhi University, Kottayam, Kerala<br />
+          from the 2001 to the 2014 admissions, and is affiliated to the<br />
+          A.P.J. Abdul Kalam Technological University, Trivandrum, Kerala
+          from<br />
+          the 2015 admissions onwards. The college is approved by the All<br />
+          India Council for Technical Education, New Delhi.<br />
+        </p>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="footer1">
+        <div class="footer-img">
+          <img src="http://localhost:3300/IMAGES/RSET_White.png" alt="Rset White" />
+        </div>
+        <div class="footer-con">
+          <h3>Cntact</h3>
+          <ul>
+            <li>Phone(Direct):+91 484 2660888</li>
+            <li>Mobile:+91 9747008895</li>
+            <li>Email:internship@rajagiritech.edu.in</li>
+          </ul>
+          <h3>Address:</h3>
+          <p>Rajagiri Valley,Kakkanad</p>
+          <p>Kochi</p>
+          <p>kerala-682039</p>
+          <p>India</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
