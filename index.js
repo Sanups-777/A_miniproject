@@ -59,13 +59,27 @@ app.use('/login', login.router);
 // app.use('/admin', admin.router);
 app.use('/users', users.router);
 
+// Create a Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+      user: 'u2104014@rajagiri.edu.in',
+      pass: 'athena@10'
+  }
+});
+
+// Define your route to render the EJS template
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 app.post('/send-email', (req, res) => {
   const { recipient, subject, message } = req.body;
 
   // Email options
   const mailOptions = {
-      from: 'your_email@gmail.com',
-      to: recipient,
+      from: 'u2104014@rajagiri.edu.in',
+      to: 'athenabhuto@gmail.com',
       subject: subject,
       text: message
   };
