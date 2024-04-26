@@ -1,5 +1,7 @@
 const express = require("express");
 const nodemailer = require('nodemailer');
+const {google}= requie('googleapis');
+const OAuth2= google.auth.OAuth2;
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
@@ -63,8 +65,8 @@ app.use('/users', users.router);
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-      user: 'u2104014@rajagiri.edu.in',
-      pass: 'athena@10'
+      user: '16miniproject@gmail.com',
+      pass: '16_miniproject@24'
   }
 });
 
@@ -78,7 +80,7 @@ app.post('/send-email', (req, res) => {
 
   // Email options
   const mailOptions = {
-      from: 'u2104014@rajagiri.edu.in',
+      from: '16miniproject@gmail.com',
       to: 'athenabhuto@gmail.com',
       subject: subject,
       text: message
