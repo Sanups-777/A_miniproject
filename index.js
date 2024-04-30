@@ -1,7 +1,7 @@
 const express = require("express");
 const nodemailer = require('nodemailer');
-const {google}= requie('googleapis');
-const OAuth2= google.auth.OAuth2;
+// const {google}= requie('googleapis');
+// const OAuth2= google.auth.OAuth2;
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
@@ -35,7 +35,7 @@ mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true, use
     const db = mongoose.connection;
     login.init(db); // Pass the MongoDB connection to login module
     // signup.init(db);
-    //  admin.init(db);
+    admin.init(db);
     users.init(db);
   })
   .catch((err) => console.error('Error connecting to MongoDB:', err));
