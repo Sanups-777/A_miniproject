@@ -36,23 +36,23 @@ const mail = (req,res)=>{
     let message = {
         from: '16miniproject@gmail.com',
         to: 'athenabhuto@gmail.com',
-        subject: subject,
-        text: mail
+        subject: "subject",
+        html: mail
     };
         // Send email
-    transporter.sendMail(message, (error, info) => {
-        if (error) {
-            console.log(error);
-            res.status(500).send('Error sending email');
-        } else {
+    transporter.sendMail(message).then(() => {
+        
             console.log('Email sent: ' + info.response);
             res.status(200).send('Email sent successfully');
-        }
-    });
+        }).catch(error=> {
+                console.log(error);
+                res.status(500).send('Error sending email');
+        })
+    
 
 
 };
-module.exports= mail;
+module.exports = { mail };
 
 
 
