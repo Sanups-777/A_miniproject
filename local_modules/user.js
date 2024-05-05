@@ -27,6 +27,7 @@ const express = require('express');
 const { ObjectId } = require('mongodb');
 const { default: mongoose } = require('mongoose');
 const router = express.Router();
+const {mail} = require("./mailer/mail.js");
 
 let db;
 function init(dbConnection) {
@@ -60,5 +61,6 @@ const sdetailSchema = new mongoose.Schema({
         res.status(500).send('Internal Server Error');
       });
   });
+  router.post('/send-email', mail);
 
   module.exports = { init, router };

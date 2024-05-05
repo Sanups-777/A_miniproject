@@ -1,7 +1,4 @@
 const express = require("express");
-const nodemailer = require('nodemailer');
-const {google}= requie('googleapis');
-const OAuth2= google.auth.OAuth2;
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
@@ -24,7 +21,6 @@ app.use("/IMAGES", express.static("IMAGES"));
 //Import local modules
 const login = require("./local_modules/login.js");
 // const signup = require("./local_modules/signup.js");
-//  const admin = require("./local_modules/admin.js");
  const users = require("./local_modules/user.js");
 
 // Connect to MongoDB
@@ -58,45 +54,16 @@ app.get("/contact", (req, res) => {
 // // Mount routes
 app.use('/login', login.router);
 // app.use('/reg', signup.router);
-// app.use('/admin', admin.router);
 app.use('/users', users.router);
 
 // Create a Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-      user: '16miniproject@gmail.com',
-      pass: '16_miniproject@24'
-  }
-});
 
 // Define your route to render the EJS template
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.post('/send-email', (req, res) => {
-  const { recipient, subject, message } = req.body;
 
-  // Email options
-  const mailOptions = {
-      from: '16miniproject@gmail.com',
-      to: 'athenabhuto@gmail.com',
-      subject: subject,
-      text: message
-  };
-
-  // Send email
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          console.log(error);
-          res.status(500).send('Error sending email');
-      } else {
-          console.log('Email sent: ' + info.response);
-          res.status(200).send('Email sent successfully');
-      }
-  });
-});
 // Start the server
 const PORT = 3300;
 app.listen(PORT, () => {
