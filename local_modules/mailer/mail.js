@@ -4,7 +4,7 @@ const Mailgen =require("mailgen")
 const mail = (req,res)=>{
 
     
-        let transporter= nodemailer.createTransport({
+    let transporter= nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: '16miniproject@gmail.com',
@@ -48,9 +48,7 @@ const mail = (req,res)=>{
                 console.log(error);
                 res.status(500).send('Error sending email');
         })
-    
-
-
+        
 };
 module.exports = { mail };
 
