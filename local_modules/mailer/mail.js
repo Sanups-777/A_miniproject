@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const Mailgen =require("mailgen")
 
 const mail = (req,res)=>{
-    const { userEmail } = req.body;
+    const { userEmail, cEmail} = req.body;
     let transporter= nodemailer.createTransport({
         service: 'Gmail',
         auth: {

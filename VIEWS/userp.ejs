@@ -8,11 +8,36 @@
 <body>
     <h1><%=name%></h1>
     <p><%=email%></p>
-    <form action='/users/send-email' method='post'>
-    <input type="hidden" name="userEmail" value="<%=email%>">
-    <button id="sendEmailBtn">Send Email</button>
+
 </form>
-    
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">name</th>
+        <th scope="col">username</th>
+        <th scope="col">email</th>
+        <th scope="col">phno</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% clist.forEach(Usersdata => { %>
+            <tr>
+                <th scope="row"><%= Usersdata._id%></th>
+                <td><%= Usersdata.name%></td>
+                <td><%= Usersdata.username%></td>
+                <td><%= Usersdata.email%></td>
+                <td><%= Usersdata.phno%></td>
+                <td><form action='/users/send-email' method='post'>
+                    <input type="hidden" name="userEmail" value="<%=email%>">
+                    <input type="hidden" name="cEmail" value="Usersdata.email%">
+                    <button id="sendEmailBtn">Send Email</button></td>
+            </tr>
+        <% }) %>
+      
+      
+    </tbody>
+  </table>
 
    
 </body>

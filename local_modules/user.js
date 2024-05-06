@@ -38,22 +38,12 @@ function init(dbConnection) {
 
 
 //admin
-const sdetailSchema = new mongoose.Schema({
-    cname: String,
-    adate: Date,
-    edate: Date,
-    position: String,
-    sdate: Date
 
-  });
-  
-  const Usersdata = mongoose.model('companies', sdetailSchema);
-  
   router.get('/details', (req, res) => {
     Usersdata.find({})
       .then((data) => {
         res.render('drives', {
-          userlist: data
+          clist: data
         });
       })
       .catch((err) => {
