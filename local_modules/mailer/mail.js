@@ -2,8 +2,7 @@ const nodemailer = require("nodemailer");
 const Mailgen =require("mailgen")
 
 const mail = (req,res)=>{
-
-    
+    const { userEmail } = req.body;
     let transporter= nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -23,7 +22,7 @@ const mail = (req,res)=>{
         })
     let response={
         body:{
-            name:"god knows",
+            name:userEmail,
             intro:"lol",
             table:{
                 data:[{
@@ -34,15 +33,15 @@ const mail = (req,res)=>{
         }}
     let mail=MailGenerator.generate(response);
     let message = {
-        from: '16miniproject@gmail.com',
-        to: 'athenabhuto@gmail.com',
-        subject: "subject",
+        from: 'athenabhuto@gmail.com',
+        to: '16miniproject@gmail.com',
+        subject: userEmail,
         html: mail
     };
         // Send email
     transporter.sendMail(message).then(() => {
         
-            console.log('Email sent: ' + info.response);
+            console.log('Email sent: ');
             res.status(200).send('Email sent successfully');
         }).catch(error=> {
                 console.log(error);

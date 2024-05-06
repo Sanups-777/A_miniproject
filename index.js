@@ -25,13 +25,13 @@ const login = require("./local_modules/login.js");
 
 // Connect to MongoDB
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://u2104014:Athens_Mdb@cluster0.mermwy1.mongodb.net/miniproject', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
     const db = mongoose.connection;
     login.init(db); // Pass the MongoDB connection to login module
     // signup.init(db);
-    admin.init(db);
+    //admin.init(db);
     users.init(db);
   })
   .catch((err) => console.error('Error connecting to MongoDB:', err));

@@ -6,30 +6,14 @@
     <title>Email Sender</title>
 </head>
 <body>
+    <h1><%=name%></h1>
+    <p><%=email%></p>
+    <form action='/users/send-email' method='post'>
+    <input type="hidden" name="userEmail" value="<%=email%>">
     <button id="sendEmailBtn">Send Email</button>
+</form>
+    
 
-    <script>
-        document.getElementById('sendEmailBtn').addEventListener('click', async () => {
-            try {
-                const response = await fetch('/send-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        recipient: 'recipient_email@example.com',
-                        subject: 'Auto-generated email',
-                        message: 'This is an auto-generated email.'
-                    })
-                });
-                const result = await response.text();
-                console.log(result);
-                alert(result);
-            } catch (error) {
-                console.error(error);
-                alert('Error sending email');
-            }
-        });
-    </script>
+   
 </body>
 </html>
