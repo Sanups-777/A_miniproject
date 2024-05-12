@@ -8,7 +8,11 @@
 <body>
     <h1><%=name%></h1>
     <p><%=email%></p>
-
+    <!-- <td><form action='/users/resume' method='post'>
+      <input type="hidden" name="userEmail" value="<%=email%>">
+      <input type="hidden" name="cEmail" value="companydata.email%">
+      <button id="sendEmailBtn">Send Email</button></td> -->
+      <button ><a href="/resume">Resume</a></button>
 </form>
 <table class="table">
     <thead>
@@ -21,16 +25,17 @@
       </tr>
     </thead>
     <tbody>
-        <% clist.forEach(Usersdata => { %>
+        <% clist.forEach(companydata => { %>
             <tr>
-                <th scope="row"><%= Usersdata._id%></th>
-                <td><%= Usersdata.name%></td>
-                <td><%= Usersdata.username%></td>
-                <td><%= Usersdata.email%></td>
-                <td><%= Usersdata.phno%></td>
+                <th scope="row"><%= companydata._id%></th>
+                <td><%= companydata.cname%></td>
+                <td><%= companydata.adate%></td>
+                <td><%= companydata.edate%></td>
+                <td><%= companydata.position%></td>
+                <td><%= companydata.sdate%></td>
                 <td><form action='/users/send-email' method='post'>
                     <input type="hidden" name="userEmail" value="<%=email%>">
-                    <input type="hidden" name="cEmail" value="Usersdata.email%">
+                    <input type="hidden" name="cEmail" value="companydata.email%">
                     <button id="sendEmailBtn">Send Email</button></td>
             </tr>
         <% }) %>

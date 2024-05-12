@@ -20,16 +20,16 @@
               </tr>
             </thead>
             <tbody>
-                <% userlist.forEach(Usersdata => { %>
+                <% clist.forEach(companydata => { %>
                     <tr>
-                        <th scope="row"><%= Usersdata._id%></th>
-                        <td><%= Usersdata.name%></td>
-                        <td><%= Usersdata.username%></td>
-                        <td><%= Usersdata.email%></td>
-                        <td><%= Usersdata.phno%></td>
+                        <th scope="row"><%= companydata._id%></th>
+                        <td><%= companydata.name%></td>
+                        <td><%= companydata.username%></td>
+                        <td><%= companydata.email%></td>
+                        <td><%= companydata.phno%></td>
                         <td> <form action='/admin/uremove' method='post'>
-                            <input type="hidden" name="email" value="Usersdata.email">
-                            <button type="submit" name="Usersdata.email">Remove User</button>
+                            <input type="hidden" name="email" value="companydata.email">
+                            <button type="submit" name="companydata.email">Remove User</button>
                         </form></td>
                     </tr>
                 <% }) %>

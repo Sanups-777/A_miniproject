@@ -1,62 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Internship Cell Portal</title>
-<link rel="stylesheet" href="/CSS/styles2.css" />
-    <style>
-        body {
-            background-color: #87CEEB;
-            margin:0;
-            padding:0;
-            font-family: Arial, sans-serif;
-        }
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Redirect</title>
 </head>
 <body>
-<!--------------------header------------------------------->
-<section class="header">
-<nav>
-            <a href="index.html"><img src="http://localhost:3300/IMAGES/rsetlogo.png" alt="rsetlogo"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="drives.html">Upcoming drives</a></li>
-                    <li><a href="login.html">Students</a></li>
-                    <li><a href="">Contact Us</a></li>
-                    <li><a href="">Internship Team</a></li>
-                </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </nav>
-</section>
-<img src="RSET_map" alt="RSET_map">
-<!------------------footer-------------------->
-     <section class="footer">
-    <div class="footer-sec">
-        <div >
-            <img src="http://localhost:3300/IMAGES/RSET_White.png" class="footer-img" alt="RSET_White">
-        </div>
-        <div class="footer-det">
-             <h3>Contact</h3>
-             <ul class="phone" >
-                <li><b>Phone(Direct):</b>+91 484 2660888</li>
-                <li><b>Mobile:</b>+91 9747008895</li>
-                <li><b>Email:</b>internship@rajagiritech.edu.in</li>
-             </ul>
-             <h3>Address:</h3>
-             <p>Rajagiri Valley,Kakkanad</p>
-             <p>Kochi</p>
-             <p>kerala-682039</p>
-             <p>India</p>
 
-        </div>
-    </div>
-     </section>
-    
-    </body>
+<h2>Compose Email</h2>
+
+<form id="emailForm">
+    <label for="to">To:</label><br>
+    <input type="email" id="to" name="to" required><br><br>
+    <label for="subject">Subject:</label><br>
+    <input type="text" id="subject" name="subject"><br><br>
+    <label for="body">Body:</label><br>
+    <textarea id="body" name="body" rows="4" cols="50"></textarea><br><br>
+    <button type="button" onclick="sendEmail()">Send Email</button>
+</form>
+
+<script>
+function sendEmail() {
+    // Get form values
+    var to = encodeURIComponent(document.getElementById("to").value);
+    var subject = encodeURIComponent(document.getElementById("subject").value);
+    var body = encodeURIComponent(document.getElementById("body").value);
+
+    // Construct Gmail URL with draft email
+    var gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=" + to + "&su=" + subject + "&body=" + body;
+
+    // Redirect to Gmail with draft email
+    window.location.href = gmailUrl;
+}
+</script>
+
+</body>
 </html>

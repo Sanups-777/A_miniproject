@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/IMAGES", express.static("IMAGES"));
 
 //Import local modules
-const login = require("./local_modules/login.js");
-// const signup = require("./local_modules/signup.js");
+const login = require("./local_modules/auth/login.js");
+const admin = require("./local_modules/admin.js");
  const users = require("./local_modules/user.js");
 
 // Connect to MongoDB
@@ -49,11 +49,14 @@ app.get("/log", (req, res) => {
 app.get("/contact", (req, res) => {
   res.sendFile(__dirname + "/PUBLIC/contactus.html");
 });
+app.get("/resume", (req, res) => {
+  res.sendFile(__dirname + "/PUBLIC/resume.html");
+});
 
 
 // // Mount routes
 app.use('/login', login.router);
-// app.use('/reg', signup.router);
+app.use('/admin', admin.router);
 app.use('/users', users.router);
 
 // Create a Nodemailer transporter

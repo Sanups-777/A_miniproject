@@ -23,11 +23,11 @@ const mail = (req,res)=>{
     let response={
         body:{
             name:userEmail,
-            intro:"lol",
+            intro:"this student from this class has requested an application for this and this internship provided by this company",
             table:{
                 data:[{
-                    item:"chekc",
-                    description:"mehh"
+                    item:"ABC company",
+                    description:"IEF"
                 }]
             }
         }}
