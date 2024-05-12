@@ -38,13 +38,13 @@
           </tr>
         </thead>
         <tbody>
-            <% userlist.forEach(Usersdata => { %>
+            <% clist.forEach(companydata => { %>
                 <tr>
-                    <th scope="row"><%= Usersdata.cname %></th>
-                    <td><%= Usersdata.position %></td>
-                    <td><%= Usersdata.sdate %></td>
-                    <td><%= Usersdata.edate %></td>
-                    <td><%= Usersdata.adate %></td>
+                    <th scope="row"><%= companydata.cname %></th>
+                    <td><%= companydata.position %></td>
+                    <td><%= companydata.sdate %></td>
+                    <td><%= companydata.edate %></td>
+                    <td><%= companydata.adate %></td>
                 </tr>
             <% }) %>
         </tbody>

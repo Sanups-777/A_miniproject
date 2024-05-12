@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const { companydata } = require("../models/models");
 let db;
 function init(dbConnection) {
   db = dbConnection;
@@ -9,30 +9,27 @@ function init(dbConnection) {
 
 
 
-async function verification(email,password,res) {
-  if (email == "admin") 
-    {
+async function verification(password,res) {
+  
       if (password === "password") 
       {
-        console.log(verify);
+        console.log("welcome admin", password);
         let a = "Admin";
-        res.render("adminp", {name: a});
+        res.render("ADMIN/adminp", {name: a});
       } 
       else 
       {
         console.log("INVALID PASSWORD");
-        return res.redirect("login.html");
+        return res.redirect("/log");
       }
-    }
-  else{console.log("autentication",email,password)}
 }
 
 router.post('/user', async(req, res) => {
   const { uid:email, pass: password } = req.body;
   console.log("User login attempt:", email, password);
-  if(email==='Admin')
-  {console.log("welcome admin", email, password);
-    verification(email,password,res)}
+  if(email==='Admin@gmail.com')
+  {
+    verification(password,res)}
   try {
     var result = await db.collection("users").findOne({ email: email });
   } catch (err) {
@@ -44,7 +41,16 @@ router.post('/user', async(req, res) => {
       let a = result.name;
       let e = result.email;
       let pp=result.profilePicUrl
-      res.render("userp", {name: a, email: e,profilep:pp});
+    companydata.find({})
+    .then((data) => {
+      res.render("userp", {
+        clist: data,name:a,email:e,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    });
     }
     else{console.log("incorrect password");}
   }

@@ -28,7 +28,7 @@ const { ObjectId } = require('mongodb');
 const { default: mongoose } = require('mongoose');
 const router = express.Router();
 const {mail} = require("./mailer/mail.js");
-
+const {companydata } = require('./models/models');
 let db;
 function init(dbConnection) {
   db = dbConnection;
@@ -40,7 +40,7 @@ function init(dbConnection) {
 //admin
 
   router.get('/details', (req, res) => {
-    Usersdata.find({})
+    companydata.find({})
       .then((data) => {
         res.render('drives', {
           clist: data
