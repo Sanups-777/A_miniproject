@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const { Usersdata, Buisnessdata } = require('./models/model.js');
 let db;
 function init(dbConnection) {
   db = dbConnection;
