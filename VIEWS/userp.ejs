@@ -4,46 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f6fc; /* Light blue */
+            color: #333; /* Dark gray */
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #0366d6; /* Blue */
+        }
+        p {
+            color: #0366d6; /* Blue */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff; /* White */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Light gray */
+        }
+        th {
+            background-color: #0366d6; /* Blue */
+            color: #fff; /* White */
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray */
+        }
+        .table button {
+            background-color: #0366d6; /* Blue */
+            color: #fff; /* White */
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .table button:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+    </style>
 </head>
 <body>
     <h1><%=name%></h1>
     <p><%=email%></p>
-    <!-- <td><form action='/users/resume' method='post'>
-      <input type="hidden" name="userEmail" value="<%=email%>">
-      <input type="hidden" name="cEmail" value="companydata.email%">
-      <button id="sendEmailBtn">Send Email</button></td> -->
-      <button ><a href="/resume">Resume</a></button>
-</form>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">name</th>
-        <th scope="col">username</th>
-        <th scope="col">email</th>
-        <th scope="col">phno</th>
-      </tr>
-    </thead>
-    <tbody>
-        <% clist.forEach(companydata => { %>
+    <button><a href="/resume" style="color: #fff; text-decoration: none;">Resume</a></button>
+    <table class="table">
+        <thead>
             <tr>
-                <th scope="row"><%= companydata._id%></th>
-                <td><%= companydata.cname%></td>
-                <td><%= companydata.adate%></td>
-                <td><%= companydata.edate%></td>
-                <td><%= companydata.position%></td>
-                <td><%= companydata.sdate%></td>
-                <td><form action='/users/send-email' method='post'>
-                    <input type="hidden" name="userEmail" value="<%=email%>">
-                    <input type="hidden" name="cEmail" value="companydata.email%">
-                    <button id="sendEmailBtn">Send Email</button></td>
+                <th scope="col">Company Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">appl. deadline</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Action</th>
             </tr>
-        <% }) %>
-      
-      
-    </tbody>
-  </table>
-
-   
+        </thead>
+        <tbody>
+            <% clist.forEach(companydata => { %>
+                <tr>
+                    <td><%= companydata.cname%></td>
+                    <td><%= companydata.position%></td>
+                    <td><%= companydata.adate%></td>
+                    <td><%= companydata.edate%></td>
+                    <td><%= companydata.sdate%></td>
+                    <td>
+                        <form action='/users/send-email' method='post'>
+                            <input type="hidden" name="userEmail" value="<%=email%>">
+                            <input type="hidden" name="cEmail" value="<%= companydata.email%>">
+                            <button class="sendEmailBtn">Send Email</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>

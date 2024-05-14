@@ -52,7 +52,9 @@ app.get("/contact", (req, res) => {
 app.get("/resume", (req, res) => {
   res.sendFile(__dirname + "/PUBLIC/resume.html");
 });
-
+app.get("/index", (req, res) => {
+  res.sendFile(__dirname + "/PUBLIC/index.html");
+});
 
 // // Mount routes
 app.use('/login', login.router);

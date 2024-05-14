@@ -1,118 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup Page</title>
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="title-text">
-        <div class="title signup">Signup</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f6fc; /* Light blue */
+      color: #333; /* Dark gray */
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      background-color: #fff; /* White */
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .title-text {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .title.signup {
+      color: #0366d6; /* Blue */
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .slide-controls {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .slide {
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 2px solid #0366d6; /* Blue */
+      border-radius: 8px;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    .slide:hover {
+      background-color: #0366d6; /* Blue */
+      color: #fff; /* White */
+    }
+    .form-inner {
+      background-color: #fff; /* White */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+    .field {
+      margin-bottom: 20px;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd; /* Light gray */
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    input[type="submit"]:focus {
+      border-color: #0366d6; /* Blue */
+      outline: none;
+    }
+    .btn-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background-color: #0366d6; /* Blue */
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    input[type="submit"] {
+      position: relative;
+      z-index: 1;
+      color: #fff; /* White */
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    input[type="submit"]{
+      color: #333;
+    }
+    input[type="submit"]:hover {
+      
+      color: #0366d6; /* Blue */
+    }
+    .table {
+      margin-top: 30px;
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff; /* White */
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd; /* Light gray */
+    }
+    th {
+      background-color: #0366d6; /* Blue */
+      color: #fff; /* White */
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2; /* Light gray */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title signup">Add company Data</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+       <!------ <label for="user" class="slide user">User</label>--->
+        <label for="business" class="slide business">Business</label>
+        <div class="slider-tab"></div>
       </div>
-      <div class="form-container">
-        <div class="slide-controls">
-          
-         
-          <label for="user" class="slide user">User</label>
-          <label for="business" class="slide business">Business</label>
-          <div class="slider-tab"></div>
-        </div>
-        <div class="form-inner">
-          <form
-            action="/admin/cdata"
-            class="business"
-            method="post"
-            autocomplete="off"
-           
-          >
-            <div class="field">
-              <input
-                type="text"
-                name="cname"
-                id="cname"
-                placeholder="CName"
-                required
-              />
-              <span id="namee" class="validation-message"></span>
-            </div>
-            <div class="field">
-              <input
-                type="text"
-                id="position"
-                name="position"
-                placeholder="Position"
-                required
-              />
-              <span id="positionn" class="validation-message"></span>
-            </div>
-            <div class="field">
-              <input
-                type="date"
-                id="sdate"
-                name="sdate"
-                placeholder="Start Date"
-                required
-              />
-              <span id="sdatee" class="validation-message"></span>
-            </div>
-            <div class="field">
-              <input
-                type="date"
-                id="edate"
-                name="edate"
-                placeholder="End Date"
-                required
-              />
-              <span id="edatee" class="validation-message"></span>
-            </div>
-            <div class="field">
-              <input
-                type="date"
-                id="adate"
-                name="adate"
-                placeholder="Application Deadline"
-                required
-              />
-              <span id="adate" class="validation-message"></span>
-            </div>
-            
-            <div class="field btn">
-              <div class="btn-layer"></div>
-              <input type="submit" value="Signup" />
-            </div>
-            
-          </form>
-        </div>
+      <div class="form-inner">
+        <form action="/admin/cdata" class="business" method="post" autocomplete="off">
+          <div class="field">
+            <input type="text" name="cname" id="cname" placeholder="CName" required />
+            <span id="namee" class="validation-message"></span>
+          </div>
+          <div class="field">
+            <input type="text" id="position" name="position" placeholder="Position" required />
+            <span id="positionn" class="validation-message"></span>
+          </div>
+          <div class="field">
+            <input type="date" id="sdate" name="sdate" placeholder="Start Date" required />
+            <span id="sdatee" class="validation-message"></span>
+          </div>
+          <div class="field">
+            <input type="date" id="edate" name="edate" placeholder="End Date" required />
+            <span id="edatee" class="validation-message"></span>
+          </div>
+          <div class="field">
+            <input type="date" id="adate" name="adate" placeholder="Application Deadline" required />
+            <span id="adatee" class="validation-message"></span>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Add" />
+          </div>
+        </form>
       </div>
     </div>
-    <table class="table">
-      <thead>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">company name</th>
+        <th scope="col">position</th>
+        <th scope="col">Appl. Deadline</th>
+        <th scope="col">start date</th>
+        <th scope="col">end date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% clist.forEach(companydata => { %>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">name</th>
-          <th scope="col">username</th>
-          <th scope="col">email</th>
-          <th scope="col">phno</th>
+          <!---<th scope="row"><%= companydata._id%></th>--->
+          <td><%= companydata.cname%></td>
+          <td><%= companydata.position%></td>
+          <td><%= companydata.adate%></td>
+          <td><%= companydata.sdate%></td>
+          <td><%= companydata.edate%></td>
         </tr>
-      </thead>
-      <tbody>
-          <% clist.forEach(companydata => { %>
-              <tr>
-                  <th scope="row"><%= companydata._id%></th>
-                  <td><%= companydata.cname%></td>
-                  <td><%= companydata.adate%></td>
-                  <td><%= companydata.edate%></td>
-                  <td><%= companydata.position%></td>
-                  <td><%= companydata.sdate%></td>
-                  
-              </tr>
-          <% }) %>
-        
-        
-      </tbody>
-    </table>
-    
-  </body>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
 </html>
