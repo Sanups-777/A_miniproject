@@ -12,4 +12,12 @@ const cdetailSchema = new mongoose.Schema({
   
   const companydata = mongoose.model('companies', cdetailSchema);
   
-  module.exports={companydata};
+  const adetailSchema = new mongoose.Schema({
+    email: String,
+    password:String,
+  });
+  
+  const admindata = mongoose.model('admin', adetailSchema);
+  
+  
+  module.exports={companydata,admindata};

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { companydata } = require("../models/models");
+const { companydata, admindata } = require("../models/models");
 let db;
 function init(dbConnection) {
   db = dbConnection;
@@ -9,11 +9,10 @@ function init(dbConnection) {
 
 
 
-async function verification(password,res) {
-  
-      if (password === "password") 
-      {
-        console.log("welcome admin", password);
+async function admin(email, password, res) {
+  const admin=await admindata.findOne({email})
+  console.log("verification");
+      if (admin.password === password) {
         let a = "Admin";
         res.render("ADMIN/adminp", {name: a});
       } 
@@ -23,13 +22,7 @@ async function verification(password,res) {
         return res.redirect("/log");
       }
 }
-
-router.post('/user', async(req, res) => {
-  const { uid:email, pass: password } = req.body;
-  console.log("User login attempt:", email, password);
-  if(email==='Admin@gmail.com')
-  {
-    verification(password,res)}
+async function student(email, password, res) {
   try {
     var result = await db.collection("users").findOne({ email: email });
   } catch (err) {
@@ -40,7 +33,6 @@ router.post('/user', async(req, res) => {
     if (result.password == password) {
       let a = result.name;
       let e = result.email;
-      let pp=result.profilePicUrl
     companydata.find({})
     .then((data) => {
       res.render("userp", {
@@ -54,7 +46,21 @@ router.post('/user', async(req, res) => {
     }
     else{console.log("incorrect password");}
   }
-  else{console.log("incorrect email");}
+  else{console.log("incorrect email");}}
+
+router.post('/user', async(req, res) => {
+  const { uid:email, pass: password } = req.body;
+  console.log("User login attempt:", email, password);
+  const [localPart, domainPart] = email.split('@');
+    console.log("check", localPart, domainPart);
+// Check if the local part contains 'admin'
+    if (localPart.includes('admin'))
+  {console.log("Welcome admin", email, password);
+    admin(email,password,res)
+ }else{
+  console.log("Welcome user", email, password);
+  student(email, password, res);
+}
 
 });
 
