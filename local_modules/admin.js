@@ -51,7 +51,7 @@ router.get('/cdetails', (req, res) => {
     });
 });
 
-router.post("/bremove", async (req, res) => {
+router.post("/delete", async (req, res) => {
   
     var email = req.body.nrem;
     var result;
@@ -65,7 +65,7 @@ router.post("/bremove", async (req, res) => {
   } else {
       await companydata.deleteOne({ email: email });
       console.log("User deleted");
-      res.redirect("/admin/bdetails");
+      res.redirect("/admin/cdetails");
   }
 
     

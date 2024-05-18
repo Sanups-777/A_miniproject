@@ -51,6 +51,8 @@ function init(dbConnection) {
         res.status(500).send('Internal Server Error');
       });
   });
+
+
   router.post('/send-email', mail);
 
   module.exports = { init, router };

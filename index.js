@@ -55,6 +55,9 @@ app.get("/resume", (req, res) => {
 app.get("/index", (req, res) => {
   res.sendFile(__dirname + "/PUBLIC/index.html");
 });
+app.get("/queries", (req, res) => {
+  res.sendFile(__dirname + "/PUBLIC/test.html");
+});
 
 // // Mount routes
 app.use('/login', login.router);
