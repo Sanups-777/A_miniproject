@@ -170,6 +170,7 @@
         <th scope="col">Appl. Deadline</th>
         <th scope="col">start date</th>
         <th scope="col">end date</th>
+        <th scoppe="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -181,6 +182,13 @@
           <td><%= companydata.adate%></td>
           <td><%= companydata.sdate%></td>
           <td><%= companydata.edate%></td>
+          <td>
+            <form action='/admin/delete' method='post'>
+                
+                <input type="hidden" name="cEmail" value="<%= companydata.email%>">
+                <button class="sendEmailBtn">delete</data></button>
+            </form>
+        </td>
         </tr>
       <% }) %>
     </tbody>
