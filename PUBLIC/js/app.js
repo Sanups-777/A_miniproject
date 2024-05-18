@@ -213,25 +213,6 @@ const generateCV = () => {
     displayCV(userData);
     console.log(userData);
 }
-
-function link() {
-    const input = document.querySelector('.proj_link');
-    const helpText = input.nextElementSibling; // Assuming the span is the next sibling of the input
-    const urlPattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-
-    if (urlPattern.test(input.value)) {
-        helpText.style.color = 'green';
-        helpText.textContent = 'Valid URL.';
-    } else {
-        helpText.style.color = 'red';
-        helpText.textContent = 'Please enter a valid URL.';
-    }
-}
 function previewImage(){
     let oFReader = new FileReader();
     oFReader.readAsDataURL(imageElem.files[0]);

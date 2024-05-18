@@ -50,6 +50,7 @@ app.get("/contact", (req, res) => {
   res.sendFile(__dirname + "/PUBLIC/contactus.html");
 });
 app.get("/resume", (req, res) => {
+  // res.sendFile(__dirname + "/PUBLIC/resume.html");
   res.sendFile(__dirname + "/PUBLIC/resume.html");
 });
 app.get("/index", (req, res) => {
