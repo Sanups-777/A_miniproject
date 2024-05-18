@@ -75,15 +75,15 @@
                     <td><%= companydata.cname%></td>
                     <td><%= companydata.position%></td>
                     <td><%= companydata.adate%></td>
-                    <td><%= companydata.edate%></td>
                     <td><%= companydata.sdate%></td>
-                    <td>
+                    <td><%= companydata.edate%></td>
+                    <% if (new Date() <= new Date(companydata.edate)) { %><td>
                         <form action='/users/send-email' method='post'>
                             <input type="hidden" name="userEmail" value="<%=email%>">
                             <input type="hidden" name="cEmail" value="<%= companydata.email%>">
                             <button class="sendEmailBtn">Send Email</button>
                         </form>
-                    </td>
+                    </td> <% } %>
                 </tr>
             <% }) %>
         </tbody>
