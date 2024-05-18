@@ -387,18 +387,21 @@
                     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
 
                 if (urlPattern.test(input.value)) {
-                    helpText.style.color = 'green';
-                    helpText.textContent = 'Valid URL.';
+                   return true
+    
                 } else {
-                    helpText.style.color = 'red';
-                    helpText.textContent = 'Please enter a valid URL.';
+                    
+                    return false
                 }
             }
             function handleKeyUp() {
                 if (link()) {
+                    helpText.style.color = 'green';
+                    helpText.textContent = 'Valid URL.';
                     generateCV();
                 } else {
-                    console.log("error")
+                    helpText.style.color = 'red';
+                    helpText.textContent = 'Please enter a valid URL.';
                 }
             }
         </script>
